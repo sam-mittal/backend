@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
             return
         }
 
-        res.render('todo', { tasks: docs, edit: false })
+        res.render('todo', { task: tasks, edit: edit })
     })
 })
 
