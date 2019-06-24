@@ -1,0 +1,42 @@
+<html>
+<head>
+    <link href="/css/index.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<% if(!edit){ %>
+<h1>Create a Task</h1>
+<form method="post">
+    Title: <input name="title" />
+    <button type="submit" name="button" value="create">Create</button>
+</form>
+<table>
+    <tr>
+        <td>S No.</td>
+        <td>Title</td>
+        <td>Actions</td>
+    </tr>
+    <% for(i=0;i<tasks.length;i++){ %>
+    <tr>
+        <td><%=i+1 %></td>
+        <td><%= tasks[i].title%></td>
+        <td>
+            <form method="post">
+                <input type="hidden" name="id" value="<%=tasks[i].id %>" />
+                <button type="submit" name="button" value="edit">Edit</button>
+                <button type="submit" name="button" value="delete">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <%}%>
+</table>
+<% }else{ %>
+<h1>Edit the Task</h1>
+<form method="post">
+    <input type="hidden" name="id" value="<%=id %>" />
+    Title: <input name="title" value="<%=title %>" />
+    <button type="submit" name="button" value="save">Save</button>
+</form>
+<% } %>
+
+</body>
+</html>

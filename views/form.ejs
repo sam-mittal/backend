@@ -1,0 +1,49 @@
+<html>
+    <head></head>
+    <body>
+        <% if(!edit){ %>
+            <h1>Create a Task</h1>
+            <form method="POST">
+                Name of the Student: <input type="text" name="name">
+                <br>
+                
+                Attendence: <input type="radio" name="attendence" value="true">True
+                        <input type="radio" name="attendence" value="false">False
+                <br>
+                <button type="submit" name="button" value="create">Create</button>
+            
+            </form>
+            <table>
+                <tr>
+                    <td>S.no</td>
+                    <td>Name of the Student</td>
+                    <td>Attendence</td>
+                    <td>Actions</td>
+                </tr>
+                <% for(i=0; i<record.length; i++){%>
+                    <tr>
+                        <td><%=i+1 %></td>
+                        <td><%= record[i].name %></td>
+                        <td><%= record[i].attendence %></td>
+                        <td>
+                            <form method="POST">
+                                <input type="hidden" name="id" value="<%=record[i].id %>"/>
+                                <button type="submit" name="button" value="edit">EDIT</button>
+                                <button type="submit" name="button" value="delete">DELETE</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <%}%>
+
+            </table>
+            <% }else{%>
+                <h1>Edit the record</h1>
+                <form method="POST">
+                    <input type="hidden" name="id" value="<%=id %>" />
+                    Name of the Student: <input name="name" value="<%=name %>" />
+                    <button type="submit" name="button" value="save">Save</button>
+                </form>
+
+        <%}%>
+    </body>
+</html>
